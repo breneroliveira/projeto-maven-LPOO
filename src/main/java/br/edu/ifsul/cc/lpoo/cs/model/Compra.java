@@ -20,7 +20,7 @@ import javax.persistence.TemporalType;
 
 /**
  *
- * @author telmo
+ * @author brener
  */
 @Entity
 @Table(name = "tb_compra")

@@ -1,3 +1,7 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package br.edu.ifsul.cc.lpoo.cs.model;
 
 import java.io.Serializable;
@@ -19,26 +23,29 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name = "tb_mapa")
-public class Mapa implements Serializable {
+@Table(name = "tb_objetivo")
+public class Objetivo implements Serializable{
     
     @Id
-    @SequenceGenerator(name = "seq_mapa", sequenceName = "seq_mapa_id", allocationSize = 1)
-    @GeneratedValue(generator = "seq_mapa", strategy = GenerationType.SEQUENCE) 
+    @SequenceGenerator(name = "seq_objetivo", sequenceName = "seq_objetivo_id", allocationSize = 1)
+    @GeneratedValue(generator = "seq_objetivo", strategy = GenerationType.SEQUENCE) 
     private Integer id;
     
     @Column(nullable = false, length = 200)
-    private String nome;
-
+    private String descricao;
+    
+    @Column(nullable = true)
+    private Integer pontos;
+    
     @ManyToMany
-    @JoinTable(name = "tb_mapa_local", joinColumns = {@JoinColumn(name = "mapa_id")}, //agregacao, vai gerar uma tabela associativa.
+    @JoinTable(name = "tb_objetivo_local", joinColumns = {@JoinColumn(name = "objetivo_id")}, //agregacao, vai gerar uma tabela associativa.
                                        inverseJoinColumns = {@JoinColumn(name = "local_id")})
     private List<Local> locais;
     
-    private Mapa(){
+    public Objetivo(){
         
     }
-    
+
     /**
      * @return the id
      */
@@ -54,17 +61,31 @@ public class Mapa implements Serializable {
     }
 
     /**
-     * @return the nome
+     * @return the descricao
      */
-    public String getNome() {
-        return nome;
+    public String getDescricao() {
+        return descricao;
     }
 
     /**
-     * @param nome the nome to set
+     * @param descricao the descricao to set
      */
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    /**
+     * @return the pontos
+     */
+    public Integer getPontos() {
+        return pontos;
+    }
+
+    /**
+     * @param pontos the pontos to set
+     */
+    public void setPontos(Integer pontos) {
+        this.pontos = pontos;
     }
 
     /**
@@ -80,7 +101,6 @@ public class Mapa implements Serializable {
     public void setLocais(List<Local> locais) {
         this.locais = locais;
     }
-
     
     
 }

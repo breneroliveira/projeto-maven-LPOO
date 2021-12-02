@@ -3,6 +3,7 @@ package br.edu.ifsul.cc.lpoo.cs.model;
 
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -17,7 +19,7 @@ import javax.persistence.TemporalType;
 
 /**
  *
- * @author brene
+ * @author brener
  */
 
 @Entity
@@ -41,6 +43,14 @@ public class Partida implements Serializable {
     @JoinColumn(name = "jogador_id", nullable = false)
     private Jogador jogador;
 
+    @OneToMany(mappedBy = "partida")
+    private List<Round> rounds;
+    
+    public Partida(){
+        
+    }
+    
+    
     /**
      * @return the id
      */
@@ -96,6 +106,19 @@ public class Partida implements Serializable {
     public void setJogador(Jogador jogador) {
         this.jogador = jogador;
     }
-    
-    
+
+    /**
+     * @return the rounds
+     */
+    public List<Round> getRounds() {
+        return rounds;
+    }
+
+    /**
+     * @param rounds the rounds to set
+     */
+    public void setRounds(List<Round> rounds) {
+        this.rounds = rounds;
+    }
+   
 }

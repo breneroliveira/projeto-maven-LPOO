@@ -3,7 +3,7 @@ package br.edu.ifsul.cc.lpoo.cs.model;
 
 /**
  *
- * @author telmo
+ * @author brener
  */
 public enum Tipo {
     

@@ -3,7 +3,7 @@ package br.edu.ifsul.cc.lpoo.cs.model;
 
 /**
  *
- * @author brene
+ * @author brener
  */
 public enum Status {
     
