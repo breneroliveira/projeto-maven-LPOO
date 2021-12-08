@@ -22,7 +22,7 @@ public class PersistenciaJDBC implements InterfacePersistencia {
     private final String DRIVER = "org.postgresql.Driver";
     private final String USER = "postgres";
     private final String SENHA = "ifsulbd";
-    public static final String URL = "jdbc:postgresql://localhost:5432/pu_db_lpoo_cs";
+    public static final String URL = "jdbc:postgresql://localhost:5432/db_lpoo_cs";
     private Connection con = null;
 
     public PersistenciaJDBC () throws Exception {
@@ -102,14 +102,14 @@ public class PersistenciaJDBC implements InterfacePersistencia {
             */
             if(rs.next()){
             
-                Patente e = new Patente();
-                e.setId(rs.getInt("id"));
-                e.setNome(rs.getString("nome"));
-                e.setCor(rs.getString("cor"));
+                Patente p = new Patente();
+                p.setId(rs.getInt("id"));
+                p.setNome(rs.getString("nome"));
+                p.setCor(rs.getString("cor"));
                 
                 ps.close();
                 
-                return e;                
+                return p;                
             }
             
         }else if (c == Municao.class){
@@ -138,6 +138,7 @@ public class PersistenciaJDBC implements InterfacePersistencia {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
     public List<Patente> listPatentes() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

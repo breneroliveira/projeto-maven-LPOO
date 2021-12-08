@@ -23,28 +23,28 @@ public class TestePersistenciaJDBC {
             
             if(!lista.isEmpty()){
             
-                for(Patente e : lista){
+                for(Patente p : lista){
 
-                    System.out.println("Nome: "+e.getNome()+" Cor: "+e.getCor());
-                    persistencia.remover(e);
+                    System.out.println("Nome: "+p.getNome()+" Cor: "+p.getCor());
+                    persistencia.remover(p);
                 }
             }else{
                 
                 System.out.println("Não encontrou a patente");
                 
-                Patente end = new Patente();
-                end.setNome("Fulano");
-                end.setCor("nenhum");                                                
-                persistencia.persist(end); //insert na tabela.                
-                System.out.println("Cadastrou a patente "+end.getId());
+                Patente pat = new Patente();
+                pat.setNome("Fulano");
+                pat.setCor("nenhum");                                                
+                persistencia.persist(pat); //insert na tabela.                
+                System.out.println("Cadastrou a patente "+pat.getId());
                 
                 
-                end = new Patente();//reset com a nova instancia que é gerada aqui.
-                end.setNome("Ciclano");
-                end.setCor("Vermelho");
+                pat = new Patente();//reset com a nova instancia que é gerada aqui.
+                pat.setNome("Ciclano");
+                pat.setCor("Vermelho");
                 
-                persistencia.persist(end); //insert na tabela.
-                System.out.println("Cadastrou a patente "+end.getId());
+                persistencia.persist(pat); //insert na tabela.
+                System.out.println("Cadastrou a patente "+pat.getId());
                 
             }
             
@@ -62,33 +62,33 @@ public class TestePersistenciaJDBC {
             System.out.println("abriu a conexao com o BD via JDBC");                        
             
             //casting (modelo o objet retornado pelo find em Patente)            
-            Patente end = (Patente) persistencia.find(Patente.class, 2);
+            Patente pat = (Patente) persistencia.find(Patente.class, 1);
             
-            if(end == null){
+            if(pat == null){
                 
                 System.out.println("Não encontrou a patente");
                 
-                end = new Patente();                
-                end.setNome("Beltrano");
-                end.setCor("Azul");
+                /*pat = new Patente();                
+                pat.setNome("Beltrano");
+                pat.setCor("Azul");
                 
-                System.out.println("Patente : "+end.getId());                                
+                System.out.println("Patente : "+pat.getId());                                
                 
-                persistencia.persist(end); //insert na tabela.
+                persistencia.persist(pat); //insert na tabela.
                 
-                System.out.println("Cadastrou a patente: "+end.getId());                                
+                System.out.println("Cadastrou a patente: "+pat.getId());*/                                
                 
             }else{
                 
-                System.out.println("Encontrou a patente: "+end.getId());
+                System.out.println("Encontrou a patente: "+pat.getId() + " | " + pat.getCor() + " | " + pat.getNome());
                 
-                end.setCor("Amarelo");
-                persistencia.persist(end);//upate.
+                /*pat.setCor("Amarelo");
+                persistencia.persist(pat);//upate.
                 
-                System.out.println("Alterou a patente: "+end.getId());
+                System.out.println("Alterou a patente: "+pat.getId());*/
                 
-                //persistencia.remover(end);
-                //System.out.println("Removeu a patente: "+end.getId());
+                //persistencia.remover(pat);
+                //System.out.println("Removeu a patente: "+pat.getId());
             }                        
             
             persistencia.fecharConexao();

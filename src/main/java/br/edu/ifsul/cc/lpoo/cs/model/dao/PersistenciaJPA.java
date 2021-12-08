@@ -2,6 +2,7 @@
 package br.edu.ifsul.cc.lpoo.cs.model.dao;
 
 import br.edu.ifsul.cc.lpoo.cs.model.Endereco;
+import br.edu.ifsul.cc.lpoo.cs.model.Patente;
 import java.util.List;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityManager;
@@ -66,6 +67,11 @@ public class PersistenciaJPA implements InterfacePersistencia {
         
         return entity.createNamedQuery("Endereco.list_order_by_id_asc").getResultList();
         
+    }
+
+    @Override
+    public List<Patente> listPatentes() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
    
 }

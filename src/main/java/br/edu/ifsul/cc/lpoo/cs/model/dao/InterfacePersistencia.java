@@ -2,6 +2,7 @@
 package br.edu.ifsul.cc.lpoo.cs.model.dao;
 
 import br.edu.ifsul.cc.lpoo.cs.model.Endereco;
+import br.edu.ifsul.cc.lpoo.cs.model.Patente;
 import java.util.List;
 
 /**
@@ -21,5 +22,7 @@ public interface InterfacePersistencia {
     public void remover(Object o) throws Exception;//delete.
     
     public List<Endereco> listEnderecos();
+    
+    public List<Patente> listPatentes();
         
 }

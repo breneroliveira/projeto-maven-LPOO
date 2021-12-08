@@ -81,7 +81,7 @@ public class TestPersistenciaJPA {
             System.out.println("abriu a conexao com o BD via JPA");                        
             
             //casting (modelo o objet retornado pelo find em Endereco)            
-            Endereco end = (Endereco) persistencia.find(Endereco.class, 6);
+            Endereco end = (Endereco) persistencia.find(Endereco.class, 2);
             
             if(end == null){
                 
