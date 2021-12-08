@@ -1,13 +1,15 @@
 
 package br.edu.ifsul.cc.lpoo.cs.model.dao;
 
+import br.edu.ifsul.cc.lpoo.cs.model.Endereco;
+import java.util.List;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 
 /**
  *
- * @author telmo
+ * @author brener
  */
 public class PersistenciaJPA implements InterfacePersistencia {
     
@@ -34,4 +36,36 @@ public class PersistenciaJPA implements InterfacePersistencia {
         entity.close();        
     }
     
+    //CRUD : c (create) r (list) u (update) d (delete)
+    @Override
+    public Object find(Class c, Object id) throws Exception {
+        
+        return entity.find(c, id);//encontra um determinado registro        
+    }
+
+    @Override
+    public void persist(Object o) throws Exception {
+        
+        entity.getTransaction().begin();// abrir a transacao.
+        entity.persist(o); //realiza o insert ou update.
+        entity.getTransaction().commit(); //comita a transacao (comando sql)
+        
+    }
+
+    @Override
+    public void remover(Object o) throws Exception {
+        
+        entity.getTransaction().begin();// abrir a transacao.
+        entity.remove(o); //realiza o delete
+        entity.getTransaction().commit(); //comita a transacao (comando sql)
+        
+    }
+
+    @Override
+    public List<Endereco> listEnderecos() {
+        
+        return entity.createNamedQuery("Endereco.list_order_by_id_asc").getResultList();
+        
+    }
+   
 }

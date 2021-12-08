@@ -26,8 +26,7 @@ public class Patente implements Serializable{
     
     @Column(nullable = false, length = 200)
     private String nome;
-    
-    
+        
     @Column(nullable = true, length = 20)
     private String cor;
     
